@@ -21,6 +21,11 @@ describe('Cereal', function()
     assert.are.same(expected, Cereal.load(Cereal.tostring(expected)))
   end)
 
+  it('failed serializing a nan value', function()
+    local expected = 0/0
+    assert.are.same(tostring(expected), tostring(Cereal.load(Cereal.tostring(expected))))
+  end)
+
   it('failed serializing a simple table with nil values', function()
     local expected = {x = nil, y, z}
     assert.are.same(expected, Cereal.load(Cereal.tostring(expected)))
@@ -44,5 +49,10 @@ describe('Cereal', function()
   it('failed serializing several tables inside of each other', function()
     local expected = {x = {y = 2, z = {w = 'test'}}}
     assert.are.same(expected, Cereal.load(Cereal.tostring(expected)))
+  end)
+
+  it('failed dump serialization', function()
+    local expected = {x = {y = 2, z = {w = 'test'}}}
+    assert.are.same(expected, Cereal.load(Cereal.dump(expected)))
   end)
 end)

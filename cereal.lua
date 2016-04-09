@@ -19,9 +19,15 @@ local function formatTable(tab)
     return str .. '}'
   elseif type(tab) == 'string' then
     return '\'' .. tab .. '\''
+  elseif tostring(tab) == tostring(0/0) then
+    return '0/0'
   else
     return tab or 'nil'
   end
+end
+
+function Cereal.dump(x)
+  return string.dump(loadstring(Cereal.tostring(x)), true)
 end
 
 function Cereal.tostring(x)
