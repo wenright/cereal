@@ -4,7 +4,8 @@ function Cereal.load(str)
   assert(type(str) == 'string', 'Cereal can only deserialize strings')
 
   local ld = loadstring(str)
-  print(ld)
+  assert(ld, 'Cereal failed to parse the string to be loaded')
+
   return setfenv(ld, {})()
 end
 
