@@ -3,8 +3,8 @@ local Cereal = {}
 function Cereal.load(str)
   assert(type(str) == 'string', 'Cereal can only deserialize strings')
 
-  local ld = loadstring(str)
-  assert(ld, 'Cereal failed to parse the string to be loaded')
+  local ld, err = loadstring(str)
+  assert(ld, 'Cereal failed to parse the string to be loaded\n' .. (err or 'Unknown error'))
 
   return setfenv(ld, {})()
 end
@@ -17,6 +17,8 @@ local function formatTable(tab)
     end
 
     return str .. '}'
+  elseif type(tab) == 'string' then
+    return '\'' .. tab .. '\''
   else
     return tab or 'nil'
   end
