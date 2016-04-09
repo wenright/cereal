@@ -17,8 +17,6 @@ describe('Cereal', function()
     local expected = string.rep('a', 2^20)
     local result = Cereal.load(Cereal.tostring(expected))
     assert.are.same(expected, result)
-
-    print(Cereal.tostring(expected))
   end)
 
   it('failed serializing a nil value', function()
