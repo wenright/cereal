@@ -3,7 +3,9 @@ local Cereal = {}
 function Cereal.load(str)
   assert(type(str) == 'string', 'Cereal can only deserialize strings')
 
-  return setfenv(loadstring(str), {})()
+  local ld = loadstring(str)
+  print(ld)
+  return setfenv(ld, {})()
 end
 
 local function formatTable(tab)
