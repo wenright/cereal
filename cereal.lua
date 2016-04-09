@@ -26,10 +26,6 @@ local function formatTable(tab)
   end
 end
 
-function Cereal.dump(x)
-  return string.dump(loadstring(Cereal.tostring(x)), true)
-end
-
 function Cereal.tostring(x)
   return 'return ' .. formatTable(x)
 end
