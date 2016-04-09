@@ -1,6 +1,6 @@
 local Cereal = {}
 
-function Cereal.load(str)
+function Cereal.loadstring(str)
   assert(type(str) == 'string', 'Cereal can only deserialize strings')
 
   local ld, err = loadstring(str)
