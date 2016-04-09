@@ -18,14 +18,12 @@ local function formatTable(tab)
 
     return str .. '}'
   else
-    return tab
+    return tab or 'nil'
   end
 end
 
-function Cereal.tostring(tab)
-  assert(type(tab) == 'table', 'Cereal can only serialize tables')
-
-  return 'return ' .. formatTable(tab)
+function Cereal.tostring(x)
+  return 'return ' .. formatTable(x)
 end
 
 return Cereal
