@@ -16,10 +16,10 @@ local player = {
 local serialized = Cereal.tostring(player)
 ```
 
-serialized is a string containing the equivalent of the player table.  It can be written to a file or sent across a network to be deserialized later.
+This creates a string containing the equivalent of the player table.  It can be written to a file or sent across a network to be deserialized later.
 
 ``` Lua
-local player = Cereal.loadstring(player)
+local player = Cereal.loadstring(serialized)
 ```
 
 player is now the same table as before being serialized.
