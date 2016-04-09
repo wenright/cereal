@@ -13,6 +13,12 @@ describe('Cereal', function()
     assert.are.same(expected, result)
   end)
 
+  it('failed serializing a huge string', function()
+    local expected = string.rep('a', 2^20)
+    local result = Cereal.load(Cereal.tostring(expected))
+    assert.are.same(expected, result)
+  end)
+
   it('failed serializing a nil value', function()
     local expected = nil
     local result = Cereal.load(Cereal.tostring(expected))
