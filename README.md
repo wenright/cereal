@@ -1,2 +1,2 @@
 # cereal
-A Lua serialization library
+Convert tables into strings that can be loaded in later
