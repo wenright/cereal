@@ -1,5 +1,5 @@
 describe('Cereal', function()
-  Cereal = require'cereal'
+  Cereal = require 'cereal'
 
   it('failed serializing a single number', function()
     local expected = 5
