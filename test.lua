@@ -1,7 +1,27 @@
 describe('Cereal', function()
   Cereal = require'cereal'
 
-  it('should serialize a string', function()
-    assert.truthy(Cereal.toString({2}) == 'return 2')
+  it('failed serializing a simple table with numbers', function()
+    local expected = {x = 5, y = 22}
+    local result = Cereal.load(Cereal.tostring(expected))
+    assert.are.same(expected, result)
+  end)
+
+  it('failed serializing a simple table with strings', function()
+    local expected = {x = 'hello', y = 'world', z = '!'}
+    local result = Cereal.load(Cereal.tostring(expected))
+    assert.are.same(expected, result)
+  end)
+
+  it('failed serializing a table inside of a table', function()
+    local expected = {x = {y = 2}}
+    local result = Cereal.load(Cereal.tostring(expected))
+    assert.are.same(expected, result)
+  end)
+
+  it('failed serializing several tables inside of each other', function()
+    local expected = {x = {y = 2, z = {w = 'test'}}}
+    local result = Cereal.load(Cereal.tostring(expected))
+    assert.are.same(expected, result)
   end)
 end)
